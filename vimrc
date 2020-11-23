@@ -99,10 +99,6 @@ autocmd FileType nerdtree noremap <buffer> <F2> <Nop>
 autocmd FileType nerdtree noremap <buffer> <F3> <Nop>
 autocmd FileType nerdtree noremap <buffer> <F4> <Nop>
 
-" leave pane for git-gutter
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
 
 " prevent cwindow be opened in normal buffers when switching
 autocmd BufWinEnter quickfix setlocal nobuflisted
@@ -150,26 +146,6 @@ inoremap <C-n> <C-x><C-o>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 autocmd CompleteDone * pclose
 
-" =================== Slash prefix '\' based  ===========
-" cscope find bindings
-" - assignment
-noremap \a :wa<CR>:cs find a <C-R>=expand("<cword>")<CR><CR>
-" - where functions calling this function
-noremap \c :wa<CR>:cs find c <C-R>=expand("<cword>")<CR><CR>
-" - where function is called
-noremap \d :wa<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>
-" - file
-noremap \f :wa<CR>:cs find f <C-R>=expand("<cword>")<CR><CR>
-" - definition
-noremap \g :wa<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
-" - including current file
-noremap \i :wa<CR>:cs find i <C-R>=expand("%:t")<CR><CR>
-" - symbol
-noremap \s :wa<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
-" - text/regular expression
-noremap \e :wa<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>
-
-
 if &diff
     nnoremap 1 [c
     nnoremap 2 ]c
@@ -181,7 +157,6 @@ else
     source ~/.vimrc-ide
 endif
 
-" source ~/.vimrc-ide
 " Enable security for project specific vimrc
 set secure
 

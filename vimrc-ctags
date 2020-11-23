@@ -1,0 +1,18 @@
+set tags=./tags;
+
+function! RefreshCTags(file)
+    if filereadable(a:file)
+        silent execute "!ctags --append=yes --languages=c -o tags" a:file
+    else
+        silent execute "!ctags --language-force=c --recurse=yes -o tags"
+    endif
+endfunction
+
+" configuire ctags
+if executable("ctags")
+    if !filereadable('tags')
+    endif
+else
+    echo "ctags is not present!"
+endif
+

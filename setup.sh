@@ -2,9 +2,9 @@
 
 function backup()
 {
-    target=$1
-    if [ -f "$target" ]; then
-        mv "$target" "$target".bkp
+    target=${1}
+    if [ -f "${target}" ]; then
+        mv "${target}" "${target}".bkp
     fi
 }
 
@@ -16,6 +16,9 @@ BASE_PATH=`pwd`
 backup ~/.vimrc
 ln -s `pwd`/vimrc ~/.vimrc
 ln -sf `pwd`/vimrc-ide ~/.vimrc-ide
+ln -sf `pwd`/vimrc-cscope ~/.vimrc-cscope
+ln -sf `pwd`/vimrc-ctags ~/.vimrc-ctags
+ln -sf `pwd`/vimrc-ycm ~/.vimrc-ycm
 ln -sf `pwd`/ctags ~/.ctags
 
 # setup .vim
@@ -35,10 +38,10 @@ backup ~/.bash_aliases
 ln -s `pwd`/bash_aliases ~/.bash_aliases
 
 # install powerfonts
-cd $(BASE_PATH)/powerline-fonts && ./install.sh
+cd "${BASE_PATH}/powerline-fonts" && ./install.sh
 
 # install
-cd $(BASE_PATH)/vim/bundle/youcompleteme && python3 install.py --clangd-completer --rust-completer
+cd "${BASE_PATH}/vim/bundle/youcompleteme" && python3 install.py --clangd-completer --rust-completer
 #
 # install bash fuzzy completer
-cd fzf && ./install
+cd "${BASE_PATH}/fzf" && ./install
